@@ -13,11 +13,11 @@ Este proyecto es una API REST que permite consumir la [API de perros](https://do
 
 1. Clona el repositorio:
    ```bash
-    git clone <URL_DEL_REPOSITORIO>
+    git clone https://github.com/GinaRM/topManagement.git
     ```
 2. Navega al directorio del proyecto:
    ```bash
-    cd <NOMBRE_DEL_PROYECTO>
+    cd topManagement
     ```
 
 ## Configuración
@@ -119,4 +119,4 @@ Este proyecto es una API REST que permite consumir la [API de perros](https://do
 
 ## Autor
 
-- [Gina Rodríguez Martínez](https://github.com/tu_usuario)
+- [Gina Rodríguez Martínez](https://github.com/GinaRM)
