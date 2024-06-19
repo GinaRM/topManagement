@@ -16,7 +16,4 @@ public class DogImageResponse {
         return message;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
 }
