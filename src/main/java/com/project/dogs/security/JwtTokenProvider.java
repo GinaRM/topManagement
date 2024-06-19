@@ -18,7 +18,7 @@ public class JwtTokenProvider {
 
     @PostConstruct
     public void init() {
-        // Verifica que el secretKey no sea nulo ni vacío
+
         if (secretKey == null || secretKey.isEmpty()) {
             throw new IllegalArgumentException("JWT secret key is missing");
         }
