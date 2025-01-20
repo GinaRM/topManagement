@@ -1,30 +1,30 @@
 # Dog API
 
-## Descripción
+## Description
 
-Este proyecto es una API REST que permite consumir la [API de perros](https://dog.ceo/dog-api/documentation/) y proporciona funcionalidades adicionales como autenticación JWT y manejo de razas de perros.
+This project is a REST API that consumes the [Dog API](https://dog.ceo/dog-api/documentation/) and provides additional functionalities such as JWT authentication and dog breed management.
 
-## Requisitos
+## Requirements
 
-- Java 11 o superior
+- Java 11 or higher
 - Maven
 
-## Instalación
+## Installation
 
-1. Clona el repositorio:
+1. Clone the repository:
    ```bash
-    git clone https://github.com/GinaRM/topManagement.git
-    ```
-2. Navega al directorio del proyecto:
+   git clone https://github.com/GinaRM/topManagement.git
+   ```
+2. Navigate to the project directory:
    ```bash
-    cd topManagement
-    ```
+   cd topManagement
+   ```
 
-## Configuración
+## Configuration
 
-1. Genera una clave secreta en base64 para JWT:
+1. Generate a base64-encoded secret key for JWT:
     ```java
-   import java.util.Base64;
+    import java.util.Base64;
     import io.jsonwebtoken.SignatureAlgorithm;
     import io.jsonwebtoken.security.Keys;
     import java.security.Key;
@@ -38,86 +38,82 @@ Este proyecto es una API REST que permite consumir la [API de perros](https://do
     }
     ```
 
-2. Compila y ejecuta el generador de claves:
+2. Compile and run the key generator:
     ```bash
     javac KeyGenerator.java
     java KeyGenerator
     ```
 
-3. Copia la clave secreta generada y añádela al archivo `application.properties`:
+3. Copy the generated secret key and add it to the `application.properties` file:
     ```properties
     jwt.secret=your_base64_encoded_secret_key
     ```
 
-4. Abre el archivo `src/main/resources/application.properties` y añade la clave secreta generada:
+4. Open the file `src/main/resources/application.properties` and add the generated secret key:
     ```properties
     jwt.secret=your_base64_encoded_secret_key
     ```
- 
-## Ejecución
 
-1. Construye y ejecuta la aplicación:
+## Execution
+
+1. Build and run the application:
     ```bash
     mvn clean install
     mvn spring-boot:run
     ```
 
-## Uso de la API
+## API Usage
 
-### Autenticación
+### Authentication
 
 #### Login
 
-1. Abre Postman.
-2. Crea una nueva solicitud.
-3. Configura la solicitud con los siguientes detalles:
-    - **Método**: POST
+1. Open Postman.
+2. Create a new request.
+3. Configure the request with the following details:
+    - **Method**: POST
     - **URL**: `http://localhost:8080/auth/login`
-    - **Encabezados**:
+    - **Headers**:
         - `Content-Type`: `application/json`
-    - **Cuerpo**: Selecciona la opción `raw` y `JSON`, y usa el siguiente contenido:
+    - **Body**: Select `raw` and `JSON` options, and use the following content:
        ```json
        {
          "username": "user1",
          "password": "password"
        }
-      ```
+       ```
 
-4. Envía la solicitud. Deberías recibir una respuesta con el token JWT en el siguiente formato:
+4. Send the request. You should receive a response with the JWT token in the following format:
     ```json
     {
       "token": "eyJhbGciOiJIUzUxMiJ9..."
     }
     ```
 
-### Endpoints Protegidos
+### Protected Endpoints
 
-#### Obtener Razas de Perros
+#### Get Dog Breeds
 
-1. Copia el token JWT de la respuesta del login.
-2. Crea una nueva solicitud en Postman.
-3. Configura la solicitud con los siguientes detalles:
-    - **Método**: GET
+1. Copy the JWT token from the login response.
+2. Create a new request in Postman.
+3. Configure the request with the following details:
+    - **Method**: GET
     - **URL**: `http://localhost:8080/dogs/breeds`
-    - **Encabezados**:
+    - **Headers**:
         - `Authorization`: `Bearer <your_jwt_token>`
-            - Reemplaza `<your_jwt_token>` con el token que copiaste.
-4. Envía la solicitud. Deberías recibir una respuesta con la lista de razas de perros en el siguiente formato:
+            - Replace `<your_jwt_token>` with the token you copied.
+4. Send the request. You should receive a response with the list of dog breeds in the following format:
     ```json
     {
       "message": {
         "affenpinscher": [],
         "african": [],
         "airedale": []
-   
-        
-     },
+      },
       "status": "success"
     }
     ```
 
-
-
-## Autor
+## Author
 
 - [Gina Rodríguez Martínez](https://github.com/GinaRM)
